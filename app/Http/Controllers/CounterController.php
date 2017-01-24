@@ -14,8 +14,13 @@ class CounterController extends Controller
         $this->middleware('jwt.auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $show = $request->input('show');
+
+        if ($show == 'historical')  {
+            return CounterInfo::getAll();
+        }
         return CounterInfo::getCurrent();
     }
 

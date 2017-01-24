@@ -21,4 +21,10 @@ class CounterInfo extends Model
             ->orderBy('electionDate')
             ->get();
     }
+
+    public static function getAll()
+    {
+        return self::orderBy('electionDate', 'desc')
+            ->get();
+    }
 }
